@@ -2,6 +2,8 @@ import styles from '../styles/pages/Dashboard.module.css';
 
 import { useOutletContext } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import Restaurants from '../components/Restaurants';
+import AddRestaurant from '../components/AddRestaurant';
 
 const Dashboard = () => {
   const { user } = useOutletContext();
@@ -21,11 +23,10 @@ const Dashboard = () => {
             👋
           </span>
         </p>
-
-        <p className={styles['info-text']}>
-          Edit the <code>src/pages/Dashboard.js</code> file to populate this
-          page.
-        </p>
+        <div>
+        {/* <Restaurants /> */}
+        <AddRestaurant/>
+        </div>
       </div>
     </>
   );

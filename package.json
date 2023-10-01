@@ -1,14 +1,19 @@
 {
+  "homepage": "https://robertsbaer.github.io/crushitsubmit/",
   "name": "crushitsubmitrestaurant",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.8.4",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^1.0.6",
+    "@nhost/react": "^2.0.32",
+    "@nhost/react-apollo": "^5.0.36",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.3.2",
+    "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -21,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
