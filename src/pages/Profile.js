@@ -19,7 +19,7 @@ const UPDATE_USER_MUTATION = gql`
 
 const Profile = () => {
   const { user } = useOutletContext();
-  const [mutateUser, { loading: updatingProfile }] = useMutation(UPDATE_USER_MUTATION)
+  const [mutateUser,] = useMutation(UPDATE_USER_MUTATION)
 
   const [firstName, setFirstName] = useState(user?.metadata?.firstName ?? '');
   const [lastName, setLastName] = useState(user?.metadata?.lastName ?? '');

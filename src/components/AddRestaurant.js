@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation, useQuery, gql, useApolloClient } from "@apollo/client";
+import { useMutation, gql, useApolloClient } from "@apollo/client";
 import { v4 as uuidv4 } from "uuid";
 
 const ADD_MENU_ITEM = gql`
