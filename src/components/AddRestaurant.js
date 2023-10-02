@@ -158,7 +158,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -172,7 +172,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -187,7 +187,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -202,7 +202,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -216,7 +216,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       {/* Menu Item Fields */}
@@ -231,7 +231,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <textarea
@@ -244,7 +244,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -259,7 +259,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -274,7 +274,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <textarea
@@ -288,7 +288,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -301,7 +301,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <input
@@ -315,7 +315,7 @@ const AddRestaurant = () => {
           padding: 20,
           margin: 15,
           backgroundColor: "pink",
-          width: "50%",
+          
         }}
       />
       <button type="submit" style={{ padding: 30, margin: 15 }}>
