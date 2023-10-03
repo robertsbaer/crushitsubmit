@@ -292,19 +292,6 @@ const AddRestaurant = () => {
         }}
       />
       <input
-        type="text"
-        name="menuItemNumberOfWinners"
-        placeholder="Number of Winners"
-        onChange={handleInputChange}
-        value={formData.menuItemNumberOfWinners}
-        style={{
-          padding: 20,
-          margin: 15,
-          backgroundColor: "pink",
-          
-        }}
-      />
-      <input
         type="url"
         name="menuItemImage"
         placeholder="Image URL"
