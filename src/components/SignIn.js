@@ -27,7 +27,7 @@ const SignIn = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles['logo-wrapper']}>
-        <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo" />
+        <img src={`${process.env.PUBLIC_URL}/../../../public/logo.png`} alt="Logo" />
         </div>
 
         {needsEmailVerification ? (
