@@ -61,7 +61,7 @@ const Layout = () => {
       <header className={styles.header}>
         <div className={styles['header-container']}>
           <Link to="/">
-            <img src={process.env.PUBLIC_URL + '../../public/logo.svg'} alt="logo" />
+          <img src={process.env.PUBLIC_URL + '/../public/logo.svg'} alt="logo" />
           </Link>
 
           <Menu as="div" className={styles.menu}>
