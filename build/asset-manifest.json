@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/crushitsubmit/static/css/main.0d81d303.css",
+    "main.js": "/crushitsubmit/static/js/main.5792fea5.js",
+    "static/js/787.b5258c1d.chunk.js": "/crushitsubmit/static/js/787.b5258c1d.chunk.js",
+    "index.html": "/crushitsubmit/index.html",
+    "main.0d81d303.css.map": "/crushitsubmit/static/css/main.0d81d303.css.map",
+    "main.5792fea5.js.map": "/crushitsubmit/static/js/main.5792fea5.js.map",
+    "787.b5258c1d.chunk.js.map": "/crushitsubmit/static/js/787.b5258c1d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0d81d303.css",
+    "static/js/main.5792fea5.js"
+  ]
+}

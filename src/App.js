@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 import Layout from './components/Layout';
@@ -27,7 +27,7 @@ function App() {
   return (
     <NhostProvider nhost={nhost}>
       <NhostApolloProvider nhost={nhost}>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
@@ -43,7 +43,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
 
       <Toaster />
       </NhostApolloProvider>
