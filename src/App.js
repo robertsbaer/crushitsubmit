@@ -13,16 +13,10 @@ import { NhostClient, NhostProvider } from '@nhost/react'
 import { NhostApolloProvider } from '@nhost/react-apollo'
 
 
-// const nhost = new NhostClient({
-//   subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
-//   region: process.env.REACT_APP_NHOST_REGION
-// })
-
 const nhost = new NhostClient({
-  subdomain: "rjwcdbysooqghmplsuwa",
-  region: "us-east-1"
-});
-
+  subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
+  region: process.env.REACT_APP_NHOST_REGION
+})
 
 function App() {
   return (
@@ -33,7 +27,7 @@ function App() {
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
           <Route
-            path=""
+            path="/"
             element={
               <ProtectedRoute>
                 <Layout />
