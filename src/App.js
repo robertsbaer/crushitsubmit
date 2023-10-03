@@ -33,7 +33,7 @@ function App() {
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
           <Route
-            path="/"
+            path=""
             element={
               <ProtectedRoute>
                 <Layout />
