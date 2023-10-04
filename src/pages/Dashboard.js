@@ -15,18 +15,17 @@ const Dashboard = () => {
       </Helmet>
 
       <div>
-      <p className={styles['welcome-text']}>
-  Welcome, 
-  {user?.metadata?.firstName && user?.metadata?.lastName 
-    ? ` ${user.metadata.firstName} ${user.metadata.lastName}` 
-    : user?.metadata?.firstName 
-    ? ` ${user.metadata.firstName}` 
-    : ' stranger'} 
-  <span role="img" alt="hello">
-    👋
-  </span>
-</p>
-
+        <p className={styles["welcome-text"]}>
+          Welcome,
+          {user?.metadata?.firstName && user?.metadata?.lastName
+            ? ` ${user.metadata.firstName} ${user.metadata.lastName}`
+            : user?.metadata?.firstName
+            ? ` ${user.metadata.firstName}`
+            : " stranger"}
+          <span role="img" alt="hello">
+            👋
+          </span>
+        </p>
 
         <h2 className={styles.title}>
           Submit a new restaurant and food challenge

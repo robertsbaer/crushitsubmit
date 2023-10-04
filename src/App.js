@@ -12,8 +12,6 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { NhostClient, NhostProvider } from '@nhost/react'
 import { NhostApolloProvider } from '@nhost/react-apollo'
 
-import AddRestaurant from './pages/AddRestaurant';
-
 
 // const nhost = new NhostClient({
 //   subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
@@ -30,23 +28,21 @@ function App() {
     <NhostProvider nhost={nhost}>
       <NhostApolloProvider nhost={nhost}>
       <Router>
-      <Routes>
-    {/* <Route path="sign-up" element={<SignUp />} />
-    <Route path="sign-in" element={<SignIn />} /> */}
-    <Route path="add-restaurant" element={<AddRestaurant />} />
-    <Route
-        path="/"
-        element={
-            <ProtectedRoute>
+        <Routes>
+          <Route path="sign-up" element={<SignUp />} />
+          <Route path="sign-in" element={<SignIn />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
                 <Layout />
-            </ProtectedRoute>
-        }
-    >
-        <Route index element={<Dashboard />} />
-        <Route path="profile" element={<Profile />} />
-    </Route>
-</Routes>
-
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+        </Routes>
       </Router>
 
       <Toaster />
