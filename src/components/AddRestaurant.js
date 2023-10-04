@@ -60,8 +60,10 @@ const ADD_RESTAURANT = gql`
 
 const CHECK_RESTAURANT_EXISTS = gql`
   query CheckRestaurantExists($name: String!) {
-    restaurants(where: { name: { _eq: $name } }) {
+    restaurants(where: { name: { _ilike: $name } }) {
       id
+      name
+      address
     }
   }
 `;
@@ -70,6 +72,7 @@ const AddRestaurant = () => {
   const client = useApolloClient();
   const [addMenuItem] = useMutation(ADD_MENU_ITEM);
   const [addRestaurant] = useMutation(ADD_RESTAURANT);
+  
   const [formData, setFormData] = useState({
     name: "",
     phone_number: "",
@@ -85,6 +88,10 @@ const AddRestaurant = () => {
     menuItemImage: "",
   });
 
+  // New state variables for search functionality
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -93,19 +100,30 @@ const AddRestaurant = () => {
     });
   };
 
+  const handleSearchChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearch = async () => {
+    const { data } = await client.query({
+      query: CHECK_RESTAURANT_EXISTS,
+      variables: { name: searchInput.toLowerCase() },  
+    });
+    setSearchResults(data.restaurants);
+};
+
   const handleSubmit = async (e) => {
-    console.log("handleSubmit called");
     e.preventDefault();
 
     // Check if the restaurant already exists
     const { data } = await client.query({
-        query: CHECK_RESTAURANT_EXISTS,
-        variables: { name: formData.name },
-      });
-      if (data.restaurants.length > 0) {
-        alert("A restaurant with this name already exists!");
-        return;
-      }
+      query: CHECK_RESTAURANT_EXISTS,
+      variables: { name: formData.name },
+    });
+    if (data.restaurants.length > 0) {
+      alert("A restaurant with this name already exists!");
+      return;
+    }
 
     const newId = uuidv4(); // Generate a new UUID
 
@@ -143,6 +161,39 @@ const AddRestaurant = () => {
   };
 
   return (
+    <div>
+      {/* Search bar */}
+      <h3 style={{marginTop: 20}}>Check if the restaurant has already been submitted</h3>
+      <div style={{ marginBottom: 20 }}>
+        <input
+          type="text"
+          placeholder="Search for a restaurant..."
+          value={searchInput}
+          onChange={handleSearchChange}
+          style={{
+            padding: 20,
+            margin: 15,
+            backgroundColor: "lightgray",
+          }}
+        />
+        <button onClick={handleSearch} style={{ padding: 20, margin: 15 }}>
+          Search
+        </button>
+        {searchResults.length > 0 ? (
+          <div>
+            <h3>Search Results:</h3>
+            <ul>
+              {searchResults.map((restaurant) => (
+                <li key={restaurant.id}>{restaurant.name}, {restaurant.address}</li>
+              ))}
+            </ul>
+          </div>
+        ) : searchInput ? (
+          <div>
+            <p>No restaurant with that name has been added.</p>
+          </div>
+        ) : null}
+      </div>
     <form
       onSubmit={handleSubmit}
       style={{ display: "flex", flexDirection: "column" }}
@@ -309,6 +360,7 @@ const AddRestaurant = () => {
         Submit
       </button>
     </form>
+    </div>
   );
 };
 
