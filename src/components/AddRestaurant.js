@@ -236,7 +236,7 @@ const AddRestaurant = () => {
       />
       <textarea
         name="menuItemDetails"
-        placeholder="Menu Item Details"
+        placeholder="Food Challenge Details"
         onChange={handleInputChange}
         value={formData.menuItemDetails}
         required
