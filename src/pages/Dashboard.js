@@ -4,6 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet";
 // import Restaurants from '../components/Restaurants';
 import AddRestaurant from "../components/AddRestaurant";
+import DataDownloadComponent from "../components/Download";
 
 const Dashboard = () => {
   const { user } = useOutletContext();
@@ -34,6 +35,7 @@ const Dashboard = () => {
           {/* <Restaurants /> */}
           <AddRestaurant />
         </div>
+        <DataDownloadComponent/>
       </div>
     </>
   );
