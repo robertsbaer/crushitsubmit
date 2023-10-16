@@ -10,10 +10,9 @@ const ADD_MENU_ITEM = gql`
     $price: numeric!
     $priceIfWon: numeric!
     $prize: String!
-    $numberOfWinners: Int!
     $image: String!
   ) {
-    insert_menu_item(
+    insert_menu_item_submit(
       objects: {
         id: $id
         title: $title
@@ -21,7 +20,6 @@ const ADD_MENU_ITEM = gql`
         price: $price
         price_if_won: $priceIfWon
         prize: $prize
-        number_of_winners: $numberOfWinners
         image: $image
       }
     ) {
@@ -32,6 +30,7 @@ const ADD_MENU_ITEM = gql`
   }
 `;
 
+
 const ADD_RESTAURANT = gql`
   mutation CreateRestaurant(
     $name: String!
@@ -41,7 +40,7 @@ const ADD_RESTAURANT = gql`
     $address: String!
     $menuItemId: uuid!
   ) {
-    insert_restaurants(
+    insert_restaurants_submit(
       objects: {
         name: $name
         phone_number: $phone_number
@@ -58,15 +57,19 @@ const ADD_RESTAURANT = gql`
   }
 `;
 
+
 const CHECK_RESTAURANT_EXISTS = gql`
   query CheckRestaurantExists($name: String!) {
-    restaurants(where: { name: { _ilike: $name } }) {
+    restaurants_submit(
+      where: { name: { _ilike: $name } }
+    ) {
       id
       name
       address
     }
   }
 `;
+
 
 const AddRestaurant = () => {
   const client = useApolloClient();
@@ -84,7 +87,6 @@ const AddRestaurant = () => {
     menuItemPrice: "",
     menuItemPriceIfWon: "",
     menuItemPrize: "",
-    menuItemNumberOfWinners: "",
     menuItemImage: "",
   });
 
@@ -112,18 +114,19 @@ const AddRestaurant = () => {
     setSearchResults(data.restaurants);
 };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // Check if the restaurant already exists
-    const { data } = await client.query({
-      query: CHECK_RESTAURANT_EXISTS,
-      variables: { name: formData.name },
-    });
-    if (data.restaurants.length > 0) {
-      alert("A restaurant with this name already exists!");
-      return;
-    }
+  // Check if the restaurant already exists
+  const { data } = await client.query({
+    query: CHECK_RESTAURANT_EXISTS,
+    variables: { name: formData.name },
+  });
+
+  if (data && data.restaurants_submit && data.restaurants_submit.length > 0) {
+    alert("A restaurant with this name already exists!");
+    return;
+  }
 
     const newId = uuidv4(); // Generate a new UUID
 
@@ -137,7 +140,6 @@ const AddRestaurant = () => {
           price: parseFloat(formData.menuItemPrice),
           priceIfWon: parseFloat(formData.menuItemPriceIfWon),
           prize: formData.menuItemPrize,
-          numberOfWinners: parseInt(formData.menuItemNumberOfWinners, 10),
           image: formData.menuItemImage,
         },
       });
