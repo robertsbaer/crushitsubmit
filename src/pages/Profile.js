@@ -58,6 +58,7 @@ const Profile = () => {
         <div className={styles.info}>
           <h2>Profile</h2>
           <p>Update your personal information.</p>
+          <p>To delete your profile, open the app and under setting press delete</p>
         </div>
 
         <div className={styles.card}>

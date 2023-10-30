@@ -90,7 +90,6 @@ const AddRestaurant = () => {
     menuItemImage: "",
   });
 
-  // New state variables for search functionality
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -117,7 +116,6 @@ const AddRestaurant = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  // Check if the restaurant already exists
   const { data } = await client.query({
     query: CHECK_RESTAURANT_EXISTS,
     variables: { name: formData.name },
@@ -128,10 +126,9 @@ const handleSubmit = async (e) => {
     return;
   }
 
-    const newId = uuidv4(); // Generate a new UUID
+    const newId = uuidv4();
 
     try {
-      // First, create the menu_item record:
       await addMenuItem({
         variables: {
           id: newId,
