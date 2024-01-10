@@ -6,19 +6,19 @@ const ResetPassword = ({ token }) => {
   const [password, setPassword] = useState('');
   const { changePassword, isLoading, isSuccess, isError, error } = useChangePassword();
 
-  // const validatePassword = (password) => {
-  //   // Example validation: minimum 8 characters, at least one number, one uppercase, one lowercase
-  //   const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-  //   return regex.test(password);
-  // };
+  const validatePassword = (password) => {
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return regex.test(password);
+  };
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    if (!(password)) {
+    if (!validatePassword(password)) {
       console.error("Password doesn't meet the required format");
       return;
     }
     try {
+      // Include the token received via email in the changePassword call
       await changePassword(token, password);
     } catch (err) {
       console.error(err);
