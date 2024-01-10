@@ -15,14 +15,12 @@ const ResetPassword = ({ token }) => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     if (!validatePassword(password)) {
-      // Handle invalid password format
       console.error("Password doesn't meet the required format");
       return;
     }
     try {
       await changePassword(token, password);
     } catch (err) {
-      // Handle the error if the password change fails
       console.error(err);
     }
   };
