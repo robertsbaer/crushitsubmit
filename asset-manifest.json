@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/crushitsubmit/static/css/main.5d29e0ca.css",
-    "main.js": "/crushitsubmit/static/js/main.e6f19eab.js",
+    "main.js": "/crushitsubmit/static/js/main.e277cc58.js",
     "static/js/787.b5258c1d.chunk.js": "/crushitsubmit/static/js/787.b5258c1d.chunk.js",
     "index.html": "/crushitsubmit/index.html",
     "main.5d29e0ca.css.map": "/crushitsubmit/static/css/main.5d29e0ca.css.map",
-    "main.e6f19eab.js.map": "/crushitsubmit/static/js/main.e6f19eab.js.map",
+    "main.e277cc58.js.map": "/crushitsubmit/static/js/main.e277cc58.js.map",
     "787.b5258c1d.chunk.js.map": "/crushitsubmit/static/js/787.b5258c1d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5d29e0ca.css",
-    "static/js/main.e6f19eab.js"
+    "static/js/main.e277cc58.js"
   ]
 }
