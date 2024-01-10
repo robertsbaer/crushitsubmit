@@ -6,15 +6,15 @@ const ResetPassword = ({ token }) => {
   const [password, setPassword] = useState('');
   const { changePassword, isLoading, isSuccess, isError, error } = useChangePassword();
 
-  const validatePassword = (password) => {
-    // Example validation: minimum 8 characters, at least one number, one uppercase, one lowercase
-    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-    return regex.test(password);
-  };
+  // const validatePassword = (password) => {
+  //   // Example validation: minimum 8 characters, at least one number, one uppercase, one lowercase
+  //   const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  //   return regex.test(password);
+  // };
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    if (!validatePassword(password)) {
+    if (!(password)) {
       console.error("Password doesn't meet the required format");
       return;
     }
