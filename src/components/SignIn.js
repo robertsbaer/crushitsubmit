@@ -59,7 +59,7 @@ const SignIn = () => {
             />
 
             <button type="submit" disabled={disableForm} className={styles.button}>
-              {isLoading ? <Spinner size="sm" /> : 'Sign in'}
+              {isLoading ? <Spinner size="sm" /> : 'Signin'}
             </button>
 
             {isError ? <p className={styles['error-text']}>{error?.message}</p> : null}
