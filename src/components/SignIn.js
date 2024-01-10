@@ -35,10 +35,6 @@ const SignIn = () => {
         <div className={styles['logo-wrapper']}>
         <img src={process.env.PUBLIC_URL + '/../public/logo.svg'} alt="logo" />
         </div>
-
-        {/* <h3>Email: fob@fob.com</h3><br/>
-        <h3>Password: mattspanish</h3> */}
-
         {needsEmailVerification ? (
           <p className={styles['verification-text']}>
             Please check your mailbox and follow the verification link to verify your email.

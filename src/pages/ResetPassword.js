@@ -1,18 +1,34 @@
-import { useResetPassword } from '@nhost/react';
 import { useState } from 'react';
+import { useChangePassword } from '@nhost/react';
 import styles from '../styles/components/ResetPassword.module.css';
 
-const ResetPassword = () => {
+const ResetPassword = ({ token }) => {
   const [password, setPassword] = useState('');
-  const { resetPassword, isLoading, isSuccess, isError, error } = useResetPassword();
+  const { changePassword, isLoading, isSuccess, isError, error } = useChangePassword();
 
-  const handleOnSubmit = (e) => {
+  const validatePassword = (password) => {
+    // Example validation: minimum 8 characters, at least one number, one uppercase, one lowercase
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return regex.test(password);
+  };
+
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    resetPassword(password);
-  }
+    if (!validatePassword(password)) {
+      // Handle invalid password format
+      console.error("Password doesn't meet the required format");
+      return;
+    }
+    try {
+      await changePassword(token, password);
+    } catch (err) {
+      // Handle the error if the password change fails
+      console.error(err);
+    }
+  };
 
   if (isSuccess) {
-    return <p>Please reopen the app to continue.</p>
+    return <p>Password updated successfully. Please reopen the app to continue.</p>;
   }
 
   return (
@@ -28,7 +44,7 @@ const ResetPassword = () => {
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Reset Password'}
         </button>
-        {isError ? <p>{error?.message}</p> : null}
+        {isError && error ? <p>{error.message}</p> : null}
       </form>
     </div>
   );
