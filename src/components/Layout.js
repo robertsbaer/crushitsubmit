@@ -1,7 +1,6 @@
 import styles from '../styles/components/Layout.module.css';
 
-import { Fragment } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { gql, useQuery } from '@apollo/client';
 import { Menu, Transition } from '@headlessui/react';
 import {
   ChevronDownIcon,
@@ -9,10 +8,10 @@ import {
   LogoutIcon,
   UserIcon,
 } from '@heroicons/react/outline';
+import { useSignOut, useUserId } from '@nhost/react';
+import { Fragment } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import Avatar from './Avatar';
-import { useSignOut } from '@nhost/react';
-import { useUserId } from '@nhost/react'
-import { gql, useQuery } from '@apollo/client'
 
 
 const GET_USER_QUERY = gql`
@@ -53,7 +52,7 @@ const Layout = () => {
       label: 'Logout',
       onClick: signOut,
       icon: LogoutIcon,
-    },
+    }
   ];
 
   return (

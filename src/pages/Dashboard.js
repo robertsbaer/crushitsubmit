@@ -1,10 +1,9 @@
 import styles from "../styles/pages/Dashboard.module.css";
 
-import { useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet";
-// import Restaurants from '../components/Restaurants';
-import AddRestaurant from "../components/AddRestaurant";
+import { useOutletContext } from "react-router-dom";
 import DataDownloadComponent from "../components/Download";
+import Restaurants from '../components/Restaurants';
 
 const Dashboard = () => {
   const { user } = useOutletContext();
@@ -32,8 +31,8 @@ const Dashboard = () => {
           Submit a new restaurant and food challenge
         </h2>
         <div>
-          {/* <Restaurants /> */}
-          <AddRestaurant />
+          <Restaurants />
+          {/* <AddRestaurant /> */}
         </div>
         <DataDownloadComponent/>
       </div>

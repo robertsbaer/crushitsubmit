@@ -6,6 +6,7 @@ import { useOutletContext } from 'react-router-dom';
 import Input from '../components/Input';
 import { gql, useMutation } from '@apollo/client';
 import { toast } from 'react-hot-toast';
+import Privacy from '../pages/Privacy'
 
 const UPDATE_USER_MUTATION = gql`
   mutation ($id: uuid!, $displayName: String!, $metadata: jsonb) {
@@ -102,6 +103,7 @@ const Profile = () => {
           </form>
         </div>
       </div>
+      <Privacy />
     </>
   );
 };

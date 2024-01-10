@@ -1,5 +1,5 @@
+import { gql, useApolloClient, useMutation } from "@apollo/client";
 import React, { useState } from "react";
-import { useMutation, gql, useApolloClient } from "@apollo/client";
 import { v4 as uuidv4 } from "uuid";
 
 const ADD_MENU_ITEM = gql`
@@ -12,7 +12,7 @@ const ADD_MENU_ITEM = gql`
     $prize: String!
     $image: String!
   ) {
-    insert_menu_item_submit(
+    insert_menu_item(
       objects: {
         id: $id
         title: $title
@@ -40,7 +40,7 @@ const ADD_RESTAURANT = gql`
     $address: String!
     $menuItemId: uuid!
   ) {
-    insert_restaurants_submit(
+    insert_restaurants(
       objects: {
         name: $name
         phone_number: $phone_number
@@ -60,7 +60,7 @@ const ADD_RESTAURANT = gql`
 
 const CHECK_RESTAURANT_EXISTS = gql`
   query CheckRestaurantExists($name: String!) {
-    restaurants_submit(
+    restaurants(
       where: { name: { _ilike: $name } }
     ) {
       id
@@ -121,7 +121,7 @@ const handleSubmit = async (e) => {
     variables: { name: formData.name },
   });
 
-  if (data && data.restaurants_submit && data.restaurants_submit.length > 0) {
+  if (data && data.restaurants && data.restaurants.length > 0) {
     alert("A restaurant with this name already exists!");
     return;
   }

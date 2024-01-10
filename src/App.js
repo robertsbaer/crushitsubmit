@@ -1,16 +1,17 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 
 import Layout from './components/Layout';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
+import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
-import ProtectedRoute from './components/ProtectedRoute'
+import ResetPassword from './pages/ResetPassword';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 
-import { NhostClient, NhostProvider } from '@nhost/react'
-import { NhostApolloProvider } from '@nhost/react-apollo'
+import { NhostClient, NhostProvider } from '@nhost/react';
+import { NhostApolloProvider } from '@nhost/react-apollo';
 
 
 // const nhost = new NhostClient({
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
+          <Route path="reset-password" element={<ResetPassword />} />
           <Route
             path="/"
             element={

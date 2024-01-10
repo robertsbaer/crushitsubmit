@@ -1,13 +1,15 @@
-import styles from '../styles/components/SignIn.module.css'
-import { useState } from 'react'
-import { useSignInEmailPassword } from '@nhost/react'
-import { Link, Navigate } from 'react-router-dom'
-import Input from './Input'
-import Spinner from './Spinner'
+import { useSignInEmailPassword } from '@nhost/react';
+import { useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import styles from '../styles/components/SignIn.module.css';
+import Input from './Input';
+import Spinner from './Spinner';
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+
 
   const { signInEmailPassword, isLoading, isSuccess, needsEmailVerification, isError, error } =
     useSignInEmailPassword()
@@ -16,6 +18,10 @@ const SignIn = () => {
     e.preventDefault()
     signInEmailPassword(email, password)
   }
+
+  const handleResetPasswordClick = () => {
+    navigate('/reset-password');
+  };
 
   if (isSuccess) {
     return <Navigate to="/" replace={true} />
@@ -70,6 +76,7 @@ const SignIn = () => {
         <Link to="/sign-up" className={styles.link}>
           Sign up
         </Link>
+        <button onClick={handleResetPasswordClick}>Reset Password</button>
       </p>
     </div>
   )
