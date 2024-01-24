@@ -52,6 +52,16 @@ const Layout = () => {
       label: 'Logout',
       onClick: signOut,
       icon: LogoutIcon,
+    },
+    {
+      label: 'FeedBack',
+      href: '/feedback',
+      icon: HomeIcon,
+    },
+    {
+      label: 'FullList',
+      href: '/fulllist',
+      icon: HomeIcon,
     }
   ];
 

@@ -10,14 +10,25 @@ const SignIn = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
+  const allowedEmails = [
+    process.env.REACT_APP_ALLOWED_EMAIL,
+    process.env.REACT_APP_ALLOWED_EMAIL_2
+  ];
+
 
   const { signInEmailPassword, isLoading, isSuccess, needsEmailVerification, isError, error } =
     useSignInEmailPassword()
 
-  const handleOnSubmit = (e) => {
-    e.preventDefault()
-    signInEmailPassword(email, password)
-  }
+    const handleOnSubmit = (e) => {
+      e.preventDefault();
+  
+      if (allowedEmails.includes(email)) {
+        signInEmailPassword(email, password);
+      } else {
+        // Handle the error for unauthorized email
+        alert('Unauthorized email');
+      }
+    };
 
   const handleResetPasswordClick = () => {
     navigate('/reset-password');

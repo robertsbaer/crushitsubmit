@@ -1,0 +1,42 @@
+/* FeedbackStyles.css */
+
+/* General Styles */
+.feedbackContainer {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 50%
+}
+
+.feedbackContainer h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* Individual Feedback Entry */
+.feedbackEntry {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.feedbackEntry h3 {
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.feedbackEntry p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Loading and Error Messages */
+.loadingError {
+    text-align: center;
+    color: #888;
+}
