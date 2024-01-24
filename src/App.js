@@ -1,15 +1,19 @@
 import { Toaster } from 'react-hot-toast';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 
+import AddRestaurant from './components/AddRestaurant';
 import FullList from './components/FullList';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
+import Restaurants from './components/Restaurants';
 import Dashboard from './pages/Dashboard';
 import Feedback from './pages/Feedback';
 import Profile from './pages/Profile';
 import ResetPassword from './pages/ResetPassword';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+
+
 
 
 
@@ -33,6 +37,8 @@ function App() {
           <Route path="reset-password" element={<ResetPassword />} />
           <Route path="feedback" element={<Feedback />}/>
           <Route path="fulllist" element={<FullList />} />
+          <Route path="addrestaurant" element={<AddRestaurant />} />
+          <Route path="restaurants" element={<Restaurants />} />
           <Route
             path="/"
             element={

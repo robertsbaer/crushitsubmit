@@ -62,6 +62,16 @@ const Layout = () => {
       label: 'FullList',
       href: '/fulllist',
       icon: HomeIcon,
+    },
+    {
+      label: 'AddRestaurant',
+      href: '/addrestaurant',
+      icon: HomeIcon,
+    },
+    {
+      label: 'Restaurants',
+      href: '/restaurants',
+      icon: HomeIcon,
     }
   ];
 

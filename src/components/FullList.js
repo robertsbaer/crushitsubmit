@@ -58,6 +58,7 @@ function FullList() {
           type="text"
           placeholder="Search Restaurants"
           onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.restaurantlistsearch}
         />
         {filteredRestaurants.map(
           ({
