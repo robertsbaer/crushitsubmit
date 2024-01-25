@@ -1,0 +1,32 @@
+.corrections-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .corrections-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .correction-item {
+    background: white;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .restaurant-name {
+    color: #333;
+    margin: 0 0 10px 0;
+  }
+  
+  .address, .correction {
+    color: #666;
+    margin: 5px 0;
+  }
+  

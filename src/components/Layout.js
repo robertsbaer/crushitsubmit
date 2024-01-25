@@ -6,7 +6,11 @@ import {
   ChevronDownIcon,
   HomeIcon,
   LogoutIcon,
+  PencilIcon,
+  PlusIcon,
+  RefreshIcon,
   UserIcon,
+  ViewListIcon
 } from '@heroicons/react/outline';
 import { useSignOut, useUserId } from '@nhost/react';
 import { Fragment } from 'react';
@@ -56,22 +60,27 @@ const Layout = () => {
     {
       label: 'FeedBack',
       href: '/feedback',
-      icon: HomeIcon,
+      icon: PencilIcon,
     },
     {
       label: 'FullList',
       href: '/fulllist',
-      icon: HomeIcon,
+      icon: ViewListIcon,
     },
     {
-      label: 'AddRestaurant',
+      label: 'Add A New Restaurant',
       href: '/addrestaurant',
-      icon: HomeIcon,
+      icon: PlusIcon,
     },
     {
-      label: 'Restaurants',
+      label: 'Restaurants Added By User',
       href: '/restaurants',
-      icon: HomeIcon,
+      icon: RefreshIcon,
+    },
+    {
+      label: 'Corrections',
+      href: '/corrections',
+      icon: PencilIcon,
     }
   ];
 
@@ -80,7 +89,7 @@ const Layout = () => {
       <header className={styles.header}>
         <div className={styles['header-container']}>
           <Link to="/">
-          <img src={process.env.PUBLIC_URL + '/../public/logo.svg'} alt="logo" />
+          <img src={process.env.PUBLIC_URL + '/../public/logo192.svg'} alt="logo" />
           </Link>
 
           <Menu as="div" className={styles.menu}>

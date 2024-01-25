@@ -36,7 +36,7 @@ const Feedback = () => {
     const { loading: usersLoading, error: usersError, data: usersData } = useQuery(GET_USERS);
 
     // useMutation hook for deleting feedback
-    const [deleteFeedback, { loading: deleting, error: deleteError }] = useMutation(DELETE_FEEDBACK, {
+    const [deleteFeedback, { error: deleteError }] = useMutation(DELETE_FEEDBACK, {
         update(cache, { data: { deleteFeedback } }) {
             cache.modify({
                 fields: {

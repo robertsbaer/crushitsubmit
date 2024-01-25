@@ -13,6 +13,16 @@ const GET_FEEDBACK_COUNT = gql`
   }
 `;
 
+const GET_RESTAURANT_TOTAL_COUNT = gql`
+  subscription RestaurantsCount {
+    restaurants_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
 const GET_RESTAURANTS_COUNT = gql`
   subscription RestaurantsCount {
     restaurants_submit_aggregate {
@@ -23,31 +33,98 @@ const GET_RESTAURANTS_COUNT = gql`
   }
 `;
 
+const GET_USERS_COUNT = gql`
+  subscription users {
+    usersAggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
+const GET_CORRECTIONS_COUNT = gql`
+  subscription corrections {
+    corrections_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
 const Dashboard = () => {
   const users = useUserData();
-  const { data: feedbackCountData, error: feedbackCountError } = useSubscription(GET_FEEDBACK_COUNT);
-  const { data: restaurantsCountData, error: restaurantsCountError } = useSubscription(GET_RESTAURANTS_COUNT);
+  const { data: feedbackCountData, error: feedbackCountError } =
+    useSubscription(GET_FEEDBACK_COUNT);
+  const { data: restaurantsCountData, error: restaurantsCountError } =
+    useSubscription(GET_RESTAURANTS_COUNT);
+  const { data: restaurantsTotalCountData, error: restaurantsTotalCountError } =
+    useSubscription(GET_RESTAURANT_TOTAL_COUNT);
+  const { data: userCountData, error: userCountError } =
+    useSubscription(GET_USERS_COUNT);
+  const { data: correctionsCountData, error: correctionsCountError } =
+    useSubscription(GET_CORRECTIONS_COUNT);
 
   if (feedbackCountError) {
     console.error("Error subscribing to feedback count:", feedbackCountError);
   }
 
   if (restaurantsCountError) {
-    console.error("Error subscribing to restaurants count:", restaurantsCountError);
+    console.error(
+      "Error subscribing to restaurants count:",
+      restaurantsCountError
+    );
   }
-
-  const feedbackCount = feedbackCountData?.feedbackform_aggregate?.aggregate?.count ?? 'Loading...';
-  const restaurantsCount = restaurantsCountData?.restaurants_submit_aggregate?.aggregate?.count ?? 'Loading...';
+  if (restaurantsTotalCountError) {
+    console.error(
+      "Error subscribing to restaurants count:",
+      restaurantsTotalCountError
+    );
+  }
+  if (userCountError) {
+    console.error(
+      "Error subscribing to restaurants count:", 
+      userCountError
+    );
+  }
+  if (correctionsCountError) {
+    console.error(
+      "Error subscribing to restaurants count:",
+      correctionsCountError
+    );
+  }
+  const feedbackCount =
+    feedbackCountData?.feedbackform_aggregate?.aggregate?.count ?? 
+    "Loading...";
+  const restaurantsCount =
+    restaurantsCountData?.restaurants_submit_aggregate?.aggregate?.count ??
+    "Loading...";
+  const restaurantsTotalCount =
+    restaurantsTotalCountData?.restaurants_aggregate?.aggregate?.count ??
+    "Loading...";
+  const userCount =
+    userCountData?.usersAggregate?.aggregate?.count ?? 
+    "Loading...";
+  const correctionsCount =
+    correctionsCountData?.corrections_aggregate?.aggregate?.count ??
+    "Loading...";
 
   const boxStyle = {
     fontSize: "24px",
-    width: "200px",
+    width: "280px",
     height: "200px",
-    padding: "20px",
-    margin: "20px",
+    padding: "10px",
+    margin: "10px",
     textAlign: "center",
     boxSizing: "border-box",
-    backgroundColor: "#fafafa"
+    backgroundColor: "#fafafa",
+  };
+
+  const boxRow = {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
   };
 
   return (
@@ -63,14 +140,32 @@ const Dashboard = () => {
             👋
           </span>
         </p>
-        <div>
+        <div style={boxRow}>
           <p style={boxStyle}>
-            Feedback count: {feedbackCount}
+            Feedback count: <br />
+            <br />
+            {feedbackCount}
           </p>
           <p style={boxStyle}>
-            Restaurants count: {restaurantsCount}
+            Restaurants To Add: <br />
+            <br />
+            {restaurantsCount}
           </p>
-          {/* Add other notifications */}
+          <p style={boxStyle}>
+            Restaurants in Total <br />
+            <br />
+            {restaurantsTotalCount}
+          </p>
+          <p style={boxStyle}>
+            Number of Users <br />
+            <br />
+            {userCount}
+          </p>
+          <p style={boxStyle}>
+            Number of Corrections <br />
+            <br />
+            {correctionsCount}
+          </p>
         </div>
         {/* <DataDownloadComponent/> */}
       </div>

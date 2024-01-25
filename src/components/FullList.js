@@ -38,19 +38,21 @@ function FullList() {
     ? restaurants.filter(restaurant => {
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
         const searchTermsArray = lowerCaseSearchTerm.split(/\s+/);
-  
+
         const nameMatch = searchTermsArray.every(term => 
           restaurant.name.toLowerCase().includes(term)
         );
-  
-        // Updated check for menu_item object
+
+        // Updated check for menu_item object including title
         const menuItemMatch = restaurant.menu_item && searchTermsArray.every(term => 
-          restaurant.menu_item.details.toLowerCase().includes(term)
+          restaurant.menu_item.details.toLowerCase().includes(term) || 
+          restaurant.menu_item.title.toLowerCase().includes(term)
         );
-  
+
         return nameMatch || menuItemMatch;
-      })
+    })
     : restaurants;
+
   
     return (
       <>

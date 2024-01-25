@@ -6,7 +6,7 @@
   "dependencies": {
     "@apollo/client": "^3.8.4",
     "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "v1",
     "@nhost/react": "^2.0.32",
     "@nhost/react-apollo": "^5.0.36",
     "@testing-library/jest-dom": "^5.17.0",
