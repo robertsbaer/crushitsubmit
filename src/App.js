@@ -2,17 +2,19 @@ import { Toaster } from "react-hot-toast";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 
 import AddRestaurant from "./components/AddRestaurant";
+import Corrections from "./components/Corrections";
 import FullList from "./components/FullList";
 import Layout from "./components/Layout";
+import PostEvents from "./components/PostEvents";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Restaurants from "./components/Restaurants";
+import UserCompetitionDisplay from "./components/UserCompetitionDisplay";
 import Dashboard from "./pages/Dashboard";
 import Feedback from "./pages/Feedback";
 import Profile from "./pages/Profile";
 import ResetPassword from "./pages/ResetPassword";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Corrections from "./components/Corrections";
 
 
 import { NhostClient, NhostProvider } from "@nhost/react";
@@ -47,6 +49,8 @@ function App() {
               <Route path="addrestaurant" element={<AddRestaurant />} />
               <Route path="restaurants" element={<Restaurants />} />
               <Route path="corrections" element={<Corrections />} />
+              <Route path="events" element={<PostEvents />} />
+              <Route path="users" element={<UserCompetitionDisplay />} />
 
             </Route>
           </Routes>

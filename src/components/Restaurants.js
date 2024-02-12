@@ -11,6 +11,7 @@ const GET_RESTAURANTS = gql`
       latitude
       longitude
       address
+      user
       menu_item_submit {
         id
         details
@@ -149,7 +150,7 @@ const INSERT_RESTAURANT = gql`
 
 const DELETE_RESTAURANT = gql`
   mutation DeleteRestaurant($restaurantId: uuid!) {
-    delete_restaurants_submit(where: {id: {_eq: $restaurantId}}) {
+    delete_restaurants_submit(where: { id: { _eq: $restaurantId } }) {
       affected_rows
     }
   }
@@ -158,7 +159,7 @@ const DELETE_RESTAURANT = gql`
 // Mutation to delete a menu item
 const DELETE_MENU_ITEM = gql`
   mutation DeleteMenuItem($menuItemId: uuid!) {
-    delete_menu_item_submit(where: {id: {_eq: $menuItemId}}) {
+    delete_menu_item_submit(where: { id: { _eq: $menuItemId } }) {
       affected_rows
     }
   }
@@ -212,14 +213,14 @@ const Restaurants = () => {
       // First delete the restaurant
       await deleteRestaurant({
         variables: {
-          restaurantId: restaurantId
+          restaurantId: restaurantId,
         },
       });
 
       // Then delete the menu item
       await deleteMenuItem({
         variables: {
-          menuItemId: menuItemId
+          menuItemId: menuItemId,
         },
       });
 
@@ -300,12 +301,20 @@ const Restaurants = () => {
             <button onClick={() => transferData(restaurant.id)}>
               Transfer Data
             </button>
-            <button onClick={() => handleDelete(restaurant.id, restaurant.menu_item_submit.id)}>
+            <button
+              onClick={() =>
+                handleDelete(restaurant.id, restaurant.menu_item_submit.id)
+              }
+            >
               Delete Restaurant and Menu Item
             </button>
             {transferSuccess && (
               <div className="success-message">{transferSuccess}</div>
             )}
+
+            <p>
+              <strong>User:</strong> {editRestaurantData?.user}
+            </p>
 
             {editingRestaurant === restaurant.id ? (
               <div>

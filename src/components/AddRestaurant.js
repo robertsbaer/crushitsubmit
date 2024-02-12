@@ -284,7 +284,7 @@ const handleSubmit = async (e) => {
           
         }}
       />
-      <textarea
+      <input
         name="menuItemDetails"
         placeholder="Food Challenge Details"
         onChange={handleInputChange}
@@ -327,7 +327,7 @@ const handleSubmit = async (e) => {
           
         }}
       />
-      <textarea
+      <input
         type="text"
         name="menuItemPrize"
         placeholder="Prize"

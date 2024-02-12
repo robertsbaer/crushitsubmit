@@ -81,6 +81,16 @@ const Layout = () => {
       label: 'Corrections',
       href: '/corrections',
       icon: PencilIcon,
+    },
+    {
+      label: 'Events',
+      href: '/events',
+      icon: PencilIcon,
+    },
+    {
+      label: 'Users',
+      href: '/users',
+      icon: UserIcon,
     }
   ];
 

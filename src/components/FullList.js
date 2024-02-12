@@ -1,4 +1,4 @@
-import { gql, useSubscription } from "@apollo/client";
+import { gql, useMutation, useSubscription } from "@apollo/client";
 import React, { useState } from "react";
 import styles from "../styles/components/FullList.module.css";
 
@@ -25,9 +25,38 @@ const GET_RESTAURANTS = gql`
   }
 `;
 
+const UPDATE_MENU_ITEM = gql`
+  mutation UpdateMenuItem($id: uuid!, $image: String!) {
+    update_menu_item_by_pk(pk_columns: { id: $id }, _set: { image: $image }) {
+      id
+      image
+    }
+  }
+`;
+
 function FullList() {
     const { data, loading, error } = useSubscription(GET_RESTAURANTS);
     const [searchTerm, setSearchTerm] = useState("");
+  const [updateMenuItem] = useMutation(UPDATE_MENU_ITEM);
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const [selectedMenuItemId, setSelectedMenuItemId] = useState(null);
+
+
+  const handleImageUpdate = async () => {
+    try {
+      await updateMenuItem({
+        variables: {
+          id: selectedMenuItemId,
+          image: newImageUrl,
+        },
+      });
+      alert("Image updated successfully!");
+      setNewImageUrl(""); // Reset the newImageUrl state to force a re-render
+    } catch (error) {
+      console.error("Error updating image: ", error.message);
+    }
+  };
+
   
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
@@ -95,6 +124,15 @@ function FullList() {
                     <p>Price if Won: {menu_item.price_if_won}</p>
                     <p>Prize: {menu_item.prize}</p>
                   </div>
+                  <input
+            type="url"
+            placeholder="New Image URL"
+            onChange={(e) => {
+              setNewImageUrl(e.target.value);
+              setSelectedMenuItemId(menu_item.id);
+            }}
+          />
+          <button onClick={handleImageUpdate}>Update Image</button>
                 </div>
               )}
             </div>

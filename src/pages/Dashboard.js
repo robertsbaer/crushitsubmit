@@ -23,6 +23,16 @@ const GET_RESTAURANT_TOTAL_COUNT = gql`
   }
 `;
 
+const GET_MENU_ITEM_TOTAL_COUNT = gql`
+  subscription RestaurantsCount {
+    menu_item_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
 const GET_RESTAURANTS_COUNT = gql`
   subscription RestaurantsCount {
     restaurants_submit_aggregate {
@@ -65,6 +75,8 @@ const Dashboard = () => {
     useSubscription(GET_USERS_COUNT);
   const { data: correctionsCountData, error: correctionsCountError } =
     useSubscription(GET_CORRECTIONS_COUNT);
+  const { data: menuItemCountData, error: menuItemCountError } =
+    useSubscription(GET_MENU_ITEM_TOTAL_COUNT);
 
   if (feedbackCountError) {
     console.error("Error subscribing to feedback count:", feedbackCountError);
@@ -83,10 +95,7 @@ const Dashboard = () => {
     );
   }
   if (userCountError) {
-    console.error(
-      "Error subscribing to restaurants count:", 
-      userCountError
-    );
+    console.error("Error subscribing to restaurants count:", userCountError);
   }
   if (correctionsCountError) {
     console.error(
@@ -94,9 +103,14 @@ const Dashboard = () => {
       correctionsCountError
     );
   }
+  if (menuItemCountError) {
+    console.error(
+      "Error subscribing to restaurants count:",
+      menuItemCountError
+    );
+  }
   const feedbackCount =
-    feedbackCountData?.feedbackform_aggregate?.aggregate?.count ?? 
-    "Loading...";
+    feedbackCountData?.feedbackform_aggregate?.aggregate?.count ?? "Loading...";
   const restaurantsCount =
     restaurantsCountData?.restaurants_submit_aggregate?.aggregate?.count ??
     "Loading...";
@@ -104,10 +118,12 @@ const Dashboard = () => {
     restaurantsTotalCountData?.restaurants_aggregate?.aggregate?.count ??
     "Loading...";
   const userCount =
-    userCountData?.usersAggregate?.aggregate?.count ?? 
-    "Loading...";
+    userCountData?.usersAggregate?.aggregate?.count ?? "Loading...";
   const correctionsCount =
     correctionsCountData?.corrections_aggregate?.aggregate?.count ??
+    "Loading...";
+  const menuItemCount =
+    menuItemCountData?.menu_item_aggregate?.aggregate?.count ??
     "Loading...";
 
   const boxStyle = {
@@ -155,6 +171,11 @@ const Dashboard = () => {
             Restaurants in Total <br />
             <br />
             {restaurantsTotalCount}
+          </p>
+          <p style={boxStyle}>
+            Menu Items in Total <br />
+            <br />
+            {menuItemCount}
           </p>
           <p style={boxStyle}>
             Number of Users <br />
